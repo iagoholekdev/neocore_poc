@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package proto;  // pacote Go final
+
+
+
+service ExtractorService {
+  rpc ExtractData (ExtractRequest) returns (ExtractResponse);
+}
+
+enum DomainType {
+  CONSULTA = 0;
+  EXAME = 1;
+  SUS = 2;
+  POLIMED = 3;
+}
+
+message ExtractRequest {
+  string file_path = 1;
+  DomainType domain_type = 2;
+}
+
+message ExtractResponse {
+  bool success = 1;
+  string message = 2;
+}
